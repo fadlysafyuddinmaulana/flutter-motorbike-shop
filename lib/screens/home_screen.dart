@@ -110,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Container(
                     width: 200, // Adjust width as needed
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Stack(
                           children: [
@@ -137,15 +137,42 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 10),
-                        Text(product['name']!),
-                        Text('\$${product['price']}'),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.star, color: Colors.amber),
-                            Text('${product['rating']}'),
-                          ],
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                product['name']!,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(height: 5),
+                              Text(
+                                '\$${product['price']}',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.grey[700],
+                                ),
+                              ),
+                              SizedBox(height: 5),
+                              Row(
+                                children: [
+                                  Icon(Icons.star,
+                                      color: Colors.amber, size: 16),
+                                  SizedBox(width: 5),
+                                  Text(
+                                    '${product['rating']}',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
