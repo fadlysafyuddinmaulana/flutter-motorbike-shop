@@ -36,6 +36,105 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     }
   }
 
+  void _showAddToCartModal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setModalState) {
+            return Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Image.network(
+                        widget.imageUrl,
+                        height: 150,
+                        width: 150,
+                        fit: BoxFit.cover,
+                      ),
+                      SizedBox(width: 20),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Text(
+                              widget.productName,
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            Text(
+                              '\$${widget.price}',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.grey[700],
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            Row(
+                              children: <Widget>[
+                                IconButton(
+                                  icon: Icon(Icons.remove),
+                                  onPressed: () {
+                                    setModalState(() {
+                                      if (_quantity > 1) _quantity--;
+                                    });
+                                  },
+                                ),
+                                Text(
+                                  _quantity.toString(),
+                                  style: TextStyle(fontSize: 20),
+                                ),
+                                IconButton(
+                                  icon: Icon(Icons.add),
+                                  onPressed: () {
+                                    setModalState(() {
+                                      _quantity++;
+                                    });
+                                  },
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  SizedBox(
+                    width: double.infinity, // Stretch the button to full width
+                    child: ElevatedButton(
+                      onPressed: () {
+                        for (int i = 0; i < _quantity; i++) {
+                          Provider.of<CartProvider>(context, listen: false).addItem(
+                            widget.productName,
+                            widget.imageUrl,
+                            widget.price, // Pass the price
+                          );
+                        }
+                        Navigator.pop(context); // Close the modal
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Added to cart')),
+                        );
+                      },
+                      child: Text('Add to Cart'),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,63 +142,50 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         title: Text(widget.productName),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image.network(
-              widget.imageUrl,
-              height: 300,
-              fit: BoxFit.cover,
-            ),
-            SizedBox(height: 20),
-            Text(
-              widget.productName,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Text(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start, // Align to left
+            children: <Widget>[
+              Image.network(
+                widget.imageUrl,
+                height: 300,
+                fit: BoxFit.cover,
+              ),
+              SizedBox(height: 20),
+              Text(
+                widget.productName,
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 10),
+              Text(
+                '\$${widget.price}', // Display price below the title
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.grey[700],
+                ),
+              ),
+              SizedBox(height: 10),
+              Text(
                 widget.description,
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.left, // Align text to left
                 style: TextStyle(fontSize: 16),
               ),
-            ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                IconButton(
-                  icon: Icon(Icons.remove),
-                  onPressed: _decrementQuantity,
+              SizedBox(height: 20),
+              SizedBox(
+                width: double.infinity, // Stretch the button to full width
+                child: ElevatedButton(
+                  onPressed: () {
+                    _showAddToCartModal(context);
+                  },
+                  child: Text('Add to Cart'),
                 ),
-                Text(
-                  _quantity.toString(),
-                  style: TextStyle(fontSize: 20),
-                ),
-                IconButton(
-                  icon: Icon(Icons.add),
-                  onPressed: _incrementQuantity,
-                ),
-              ],
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                for (int i = 0; i < _quantity; i++) {
-                  Provider.of<CartProvider>(context, listen: false).addItem(
-                    widget.productName,
-                    widget.imageUrl,
-                    widget.price, // Pass the price
-                  );
-                }
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Added to cart')),
-                );
-              },
-              child: Text('Add to Cart'),
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );

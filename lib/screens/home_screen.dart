@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:motorbike_shop/screens/product_detail_screen.dart';
 import 'package:motorbike_shop/screens/cart_screen.dart';
 import 'package:motorbike_shop/screens/product_list.dart'; // Correctly import the product list
+import 'package:motorbike_shop/screens/profile_screen.dart'; // Import the profile screen
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -20,7 +21,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Motorbike Shop'),
+        backgroundColor: Colors.blue, // Set the app bar background color
+        title: Text(
+          'Motorbike Shop',
+          style: TextStyle(color: Colors.white), // Set the app bar text color
+        ),
         actions: [
           IconButton(
             icon: Icon(Icons.shopping_cart),
@@ -31,7 +36,20 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             },
           ),
+          IconButton(
+            // Add the profile icon
+            icon: Icon(Icons.person),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        ProfileScreen()), // Navigate to the profile screen
+              );
+            },
+          ),
         ],
+        iconTheme: IconThemeData(color: Colors.white), // Set the icon color
       ),
       body: ListView(
         shrinkWrap: true,
@@ -59,10 +77,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
           ),
           // Brand Sections
-          buildBrandSection('Brand 1'),
-          buildBrandSection('Brand 2'),
-          buildBrandSection('Brand 3'),
-          buildBrandSection('Brand 4'),
+          buildBrandSection('Yamaha'),
+          buildBrandSection('Kawasaki'),
+          buildBrandSection('Honda'),
+          buildBrandSection('Suzuki'),
         ],
       ),
     );
