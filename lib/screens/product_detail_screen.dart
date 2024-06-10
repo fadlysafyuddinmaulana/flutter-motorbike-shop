@@ -11,6 +11,7 @@ class ProductDetailScreen extends StatefulWidget {
   final String specsification_2;
   final String specsification_3;
   final String specsification_4;
+  final String specsification_5;
 
   ProductDetailScreen({
     required this.productName,
@@ -21,6 +22,7 @@ class ProductDetailScreen extends StatefulWidget {
     required this.specsification_2,
     required this.specsification_3,
     required this.specsification_4,
+    required this.specsification_5,
   });
 
   @override
@@ -214,7 +216,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   Expanded(
                     child: Text(
                       widget
-                          .specsification_1, // Replace with your mesin description
+                          .specsification_2, // Replace with your mesin description
                       textAlign: TextAlign.left, // Align text to left
                       style: TextStyle(fontSize: 16),
                     ),
@@ -229,7 +231,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   Expanded(
                     child: Text(
                       widget
-                          .specsification_1, // Replace with your mesin description
+                          .specsification_3, // Replace with your mesin description
                       textAlign: TextAlign.left, // Align text to left
                       style: TextStyle(fontSize: 16),
                     ),
@@ -244,7 +246,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   Expanded(
                     child: Text(
                       widget
-                          .specsification_1, // Replace with your mesin description
+                          .specsification_4, // Replace with your mesin description
                       textAlign: TextAlign.left, // Align text to left
                       style: TextStyle(fontSize: 16),
                     ),
@@ -259,7 +261,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   Expanded(
                     child: Text(
                       widget
-                          .specsification_1, // Replace with your mesin description
+                          .specsification_5, // Replace with your mesin description
                       textAlign: TextAlign.left, // Align text to left
                       style: TextStyle(fontSize: 16),
                     ),

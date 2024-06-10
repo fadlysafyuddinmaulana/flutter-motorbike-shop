@@ -7,12 +7,9 @@ final List<Map<String, dynamic>> products = [
         'This is the description for Yamaha Soul GT. It is a high-performance motorbike suitable for all terrains.',
     'specsification_1': 'Tipe: Air cooled 4-stroke, SOHC, Single cylinder',
     'specsification_2': 'Kapasitas: 125cc',
-    'specsification_3': 'Diameter X Langkah: 52,4 mm x 57,9 mm',
-    'specsification_4': 'Rasio Kompresi: 9,5 : 1',
-    'specsification_5': 'Pengapian: TCI (Transistor Control Ignition)',
-    'specsification_6': 'Sistem Bahan Bakar: Fuel injection',
-    'specsification_7': 'Starter: Electric',
-    'specsification_8':
+    'specsification_3': 'Sistem Bahan Bakar: Fuel injection',
+    'specsification_4': 'Starter: Electric',
+    'specsification_5':
         'Transmsi: Kering, Centrifugal automatic, V-belt automatic',
     'specsification_9': 'P x L x T: 1870mm X 685mm X 1070mm',
     'specsification_10': 'Tinggi Tempat Duduk: 760mm',

@@ -122,6 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         specsification_2: product['specsification_2'],
                         specsification_3: product['specsification_3'],
                         specsification_4: product['specsification_4'],
+                        specsification_5: product['specsification_4'],
                       ),
                     ),
                   );
