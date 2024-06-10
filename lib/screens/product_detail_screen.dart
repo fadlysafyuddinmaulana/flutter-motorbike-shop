@@ -6,13 +6,15 @@ class ProductDetailScreen extends StatefulWidget {
   final String productName;
   final String imageUrl;
   final String description;
-  final double price; // Add price parameter
+  final double price;
+  final String specsification_1; // Add specification parameter
 
   ProductDetailScreen({
     required this.productName,
     required this.imageUrl,
     required this.description,
-    required this.price, // Add price parameter
+    required this.price,
+    required this.specsification_1, // Add specification parameter
   });
 
   @override
@@ -112,7 +114,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     child: ElevatedButton(
                       onPressed: () {
                         for (int i = 0; i < _quantity; i++) {
-                          Provider.of<CartProvider>(context, listen: false).addItem(
+                          Provider.of<CartProvider>(context, listen: false)
+                              .addItem(
                             widget.productName,
                             widget.imageUrl,
                             widget.price, // Pass the price
@@ -174,20 +177,49 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 textAlign: TextAlign.left, // Align text to left
                 style: TextStyle(fontSize: 16),
               ),
-              SizedBox(height: 20),
-              SizedBox(
-                width: double.infinity, // Stretch the button to full width
-                child: ElevatedButton(
-                  onPressed: () {
-                    _showAddToCartModal(context);
-                  },
-                  child: Text('Add to Cart'),
+              SizedBox(height: 10), // Add spacing
+              Text(
+                'Mesin:', // Text for "mesin"
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
                 ),
+              ),
+              SizedBox(height: 5),
+              Row(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align text to top-left
+                children: [
+                  Text(
+                    'Tipe:', // Text for "mesin"
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      widget
+                          .specsification_1, // Replace with your mesin description
+                      textAlign: TextAlign.left, // Align text to left
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          _showAddToCartModal(context);
+        },
+        label: Text('Add to Cart'),
+        icon: Icon(Icons.add_shopping_cart),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

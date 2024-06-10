@@ -118,6 +118,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         imageUrl: product['image']!,
                         description: product['description']!,
                         price: product['price'], // Pass the price
+                        specsification_1: product[
+                            'specsification_1'], // Change to specification
                       ),
                     ),
                   );
