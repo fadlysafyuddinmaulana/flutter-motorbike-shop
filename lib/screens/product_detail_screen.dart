@@ -7,14 +7,20 @@ class ProductDetailScreen extends StatefulWidget {
   final String imageUrl;
   final String description;
   final double price;
-  final String specsification_1; // Add specification parameter
+  final String specsification_1;
+  final String specsification_2;
+  final String specsification_3;
+  final String specsification_4;
 
   ProductDetailScreen({
     required this.productName,
     required this.imageUrl,
     required this.description,
     required this.price,
-    required this.specsification_1, // Add specification parameter
+    required this.specsification_1,
+    required this.specsification_2,
+    required this.specsification_3,
+    required this.specsification_4,
   });
 
   @override
@@ -177,7 +183,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 textAlign: TextAlign.left, // Align text to left
                 style: TextStyle(fontSize: 16),
               ),
-              SizedBox(height: 10), // Add spacing
               Text(
                 'Mesin:', // Text for "mesin"
                 style: TextStyle(
@@ -190,13 +195,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 crossAxisAlignment:
                     CrossAxisAlignment.start, // Align text to top-left
                 children: [
-                  Text(
-                    'Tipe:', // Text for "mesin"
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
                   SizedBox(width: 10),
                   Expanded(
                     child: Text(
@@ -208,6 +206,114 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   ),
                 ],
               ),
+              Row(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align text to top-left
+                children: [
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      widget
+                          .specsification_1, // Replace with your mesin description
+                      textAlign: TextAlign.left, // Align text to left
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align text to top-left
+                children: [
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      widget
+                          .specsification_1, // Replace with your mesin description
+                      textAlign: TextAlign.left, // Align text to left
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align text to top-left
+                children: [
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      widget
+                          .specsification_1, // Replace with your mesin description
+                      textAlign: TextAlign.left, // Align text to left
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align text to top-left
+                children: [
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      widget
+                          .specsification_1, // Replace with your mesin description
+                      textAlign: TextAlign.left, // Align text to left
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
+              Text(
+                'Body:', // Text for "mesin"
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 5),
+              Row(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align text to top-left
+                children: [
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      widget
+                          .specsification_1, // Replace with your mesin description
+                      textAlign: TextAlign.left, // Align text to left
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
+              Text(
+                'Rangka dan Kaki-Kaki:', // Text for "mesin"
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 5),
+              Row(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align text to top-left
+                children: [
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      widget
+                          .specsification_1, // Replace with your mesin description
+                      textAlign: TextAlign.left, // Align text to left
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                  height: 80), // Add extra spacing to avoid FAB covering text
             ],
           ),
         ),
