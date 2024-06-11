@@ -28,6 +28,16 @@ class ProductDetailScreen extends StatefulWidget {
   final String specsification_18;
   final String specsification_19;
   final String specsification_20;
+  final String specsification_21;
+  final String specsification_22;
+  final String specsification_23;
+  final String specsification_24;
+  final String specsification_25;
+  final String specsification_26;
+  final String specsification_27;
+  final String specsification_28;
+  final String specsification_29;
+  final String specsification_30;
 
   ProductDetailScreen({
     required this.productName,
@@ -54,6 +64,16 @@ class ProductDetailScreen extends StatefulWidget {
     required this.specsification_18,
     required this.specsification_19,
     required this.specsification_20,
+    required this.specsification_21,
+    required this.specsification_22,
+    required this.specsification_23,
+    required this.specsification_24,
+    required this.specsification_25,
+    required this.specsification_26,
+    required this.specsification_27,
+    required this.specsification_28,
+    required this.specsification_29,
+    required this.specsification_30,
   });
 
   @override
