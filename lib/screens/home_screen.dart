@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:intl/intl.dart';
 import 'package:motorbike_shop/screens/product_detail_screen.dart';
 import 'package:motorbike_shop/screens/cart_screen.dart';
-import 'package:motorbike_shop/screens/product_list.dart'; // Correctly import the product list
-import 'package:motorbike_shop/screens/profile_screen.dart'; // Import the profile screen
+import 'package:motorbike_shop/screens/product_list.dart';
+import 'package:motorbike_shop/screens/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -64,8 +65,12 @@ class _HomeScreenState extends State<HomeScreen> {
             items: products
                 .map((product) => Container(
                       child: Center(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
                           child: Image.network(product['image']!,
-                              fit: BoxFit.cover, width: 1000)),
+                              fit: BoxFit.cover, width: 1000),
+                        ),
+                      ),
                     ))
                 .toList(),
           ),
@@ -78,7 +83,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           // Brand Sections
           buildBrandSection('Yamaha'),
-          buildBrandSection('Kawasaki'),
           buildBrandSection('Honda'),
           buildBrandSection('Suzuki'),
         ],
@@ -117,12 +121,27 @@ class _HomeScreenState extends State<HomeScreen> {
                         productName: product['name']!,
                         imageUrl: product['image']!,
                         description: product['description']!,
-                        price: product['price'], // Pass the price
+                        price: product['price'],
                         specsification_1: product['specsification_1'],
                         specsification_2: product['specsification_2'],
                         specsification_3: product['specsification_3'],
                         specsification_4: product['specsification_4'],
-                        specsification_5: product['specsification_4'],
+                        specsification_5: product['specsification_5'],
+                        specsification_6: product['specsification_6'],
+                        specsification_7: product['specsification_7'],
+                        specsification_8: product['specsification_8'],
+                        specsification_9: product['specsification_9'],
+                        specsification_10: product['specsification_10'],
+                        specsification_11: product['specsification_11'],
+                        specsification_12: product['specsification_12'],
+                        specsification_13: product['specsification_13'],
+                        specsification_14: product['specsification_14'],
+                        specsification_15: product['specsification_15'],
+                        specsification_16: product['specsification_16'],
+                        specsification_17: product['specsification_17'],
+                        specsification_18: product['specsification_18'],
+                        specsification_19: product['specsification_19'],
+                        specsification_20: product['specsification_20'],
                       ),
                     ),
                   );
@@ -135,11 +154,17 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Image.network(
-                          product['image']!,
-                          height: 150,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
+                        ClipRRect(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(8.0),
+                            topRight: Radius.circular(8.0),
+                          ),
+                          child: Image.network(
+                            product['image']!,
+                            height: 150,
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -155,7 +180,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               SizedBox(height: 5),
                               Text(
-                                '\$${product['price']}',
+                                formatCurrency(product['price']),
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: Colors.grey[700],
@@ -188,5 +213,11 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ],
     );
+  }
+
+  String formatCurrency(int amount) {
+    final formatCurrency =
+        NumberFormat.currency(locale: 'id_ID', symbol: 'Rp ');
+    return formatCurrency.format(amount);
   }
 }

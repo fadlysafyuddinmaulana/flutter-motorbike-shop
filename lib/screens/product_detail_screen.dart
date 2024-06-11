@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:motorbike_shop/providers/cart_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   final String productName;
@@ -12,6 +13,21 @@ class ProductDetailScreen extends StatefulWidget {
   final String specsification_3;
   final String specsification_4;
   final String specsification_5;
+  final String specsification_6;
+  final String specsification_7;
+  final String specsification_8;
+  final String specsification_9;
+  final String specsification_10;
+  final String specsification_11;
+  final String specsification_12;
+  final String specsification_13;
+  final String specsification_14;
+  final String specsification_15;
+  final String specsification_16;
+  final String specsification_17;
+  final String specsification_18;
+  final String specsification_19;
+  final String specsification_20;
 
   ProductDetailScreen({
     required this.productName,
@@ -23,6 +39,21 @@ class ProductDetailScreen extends StatefulWidget {
     required this.specsification_3,
     required this.specsification_4,
     required this.specsification_5,
+    required this.specsification_6,
+    required this.specsification_7,
+    required this.specsification_8,
+    required this.specsification_9,
+    required this.specsification_10,
+    required this.specsification_11,
+    required this.specsification_12,
+    required this.specsification_13,
+    required this.specsification_14,
+    required this.specsification_15,
+    required this.specsification_16,
+    required this.specsification_17,
+    required this.specsification_18,
+    required this.specsification_19,
+    required this.specsification_20,
   });
 
   @override
@@ -144,6 +175,17 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         );
       },
     );
+  }
+
+  void _buyNow() async {
+    String message = 'Hello, I would like to buy ${widget.productName}.';
+    String url =
+        'https://wa.me/whatsappphonenumber/?text=${Uri.encodeFull(message)}';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
   @override
@@ -268,6 +310,36 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   ),
                 ],
               ),
+              Row(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align text to top-left
+                children: [
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      widget
+                          .specsification_6, // Replace with your mesin description
+                      textAlign: TextAlign.left, // Align text to left
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align text to top-left
+                children: [
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      widget
+                          .specsification_7, // Replace with your mesin description
+                      textAlign: TextAlign.left, // Align text to left
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
               Text(
                 'Body:', // Text for "mesin"
                 style: TextStyle(
@@ -284,7 +356,82 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   Expanded(
                     child: Text(
                       widget
-                          .specsification_1, // Replace with your mesin description
+                          .specsification_8, // Replace with your mesin description
+                      textAlign: TextAlign.left, // Align text to left
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align text to top-left
+                children: [
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      widget
+                          .specsification_9, // Replace with your mesin description
+                      textAlign: TextAlign.left, // Align text to left
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align text to top-left
+                children: [
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      widget
+                          .specsification_10, // Replace with your mesin description
+                      textAlign: TextAlign.left, // Align text to left
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align text to top-left
+                children: [
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      widget
+                          .specsification_11, // Replace with your mesin description
+                      textAlign: TextAlign.left, // Align text to left
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align text to top-left
+                children: [
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      widget
+                          .specsification_12, // Replace with your mesin description
+                      textAlign: TextAlign.left, // Align text to left
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align text to top-left
+                children: [
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      widget
+                          .specsification_13, // Replace with your mesin description
                       textAlign: TextAlign.left, // Align text to left
                       style: TextStyle(fontSize: 16),
                     ),
@@ -299,6 +446,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 ),
               ),
               SizedBox(height: 5),
+
               Row(
                 crossAxisAlignment:
                     CrossAxisAlignment.start, // Align text to top-left
@@ -307,7 +455,97 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   Expanded(
                     child: Text(
                       widget
-                          .specsification_1, // Replace with your mesin description
+                          .specsification_14, // Replace with your mesin description
+                      textAlign: TextAlign.left, // Align text to left
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align text to top-left
+                children: [
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      widget
+                          .specsification_15, // Replace with your mesin description
+                      textAlign: TextAlign.left, // Align text to left
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align text to top-left
+                children: [
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      widget
+                          .specsification_16, // Replace with your mesin description
+                      textAlign: TextAlign.left, // Align text to left
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align text to top-left
+                children: [
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      widget
+                          .specsification_17, // Replace with your mesin description
+                      textAlign: TextAlign.left, // Align text to left
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align text to top-left
+                children: [
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      widget
+                          .specsification_18, // Replace with your mesin description
+                      textAlign: TextAlign.left, // Align text to left
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align text to top-left
+                children: [
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      widget
+                          .specsification_19, // Replace with your mesin description
+                      textAlign: TextAlign.left, // Align text to left
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align text to top-left
+                children: [
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      widget
+                          .specsification_20, // Replace with your mesin description
                       textAlign: TextAlign.left, // Align text to left
                       style: TextStyle(fontSize: 16),
                     ),
@@ -320,12 +558,24 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          _showAddToCartModal(context);
-        },
-        label: Text('Add to Cart'),
-        icon: Icon(Icons.add_shopping_cart),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          FloatingActionButton.extended(
+            onPressed: () {
+              _showAddToCartModal(context);
+            },
+            label: Text('Add to Cart'),
+            icon: Icon(Icons.add_shopping_cart),
+          ),
+          FloatingActionButton.extended(
+            onPressed: () {
+              _buyNow();
+            },
+            label: Text('Buy Now'),
+            icon: Icon(Icons.shopping_basket),
+          ),
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
