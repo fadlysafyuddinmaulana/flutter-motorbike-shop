@@ -8,7 +8,7 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cartProvider = Provider.of<CartProvider>(context);
-    double totalPrice = cartProvider.totalPrice; // Total price of all items in the cart
+    double totalPrice = cartProvider.totalPrice;
 
     return Scaffold(
       appBar: AppBar(
@@ -21,11 +21,14 @@ class CartScreen extends StatelessWidget {
               itemCount: cartProvider.items.length,
               itemBuilder: (context, index) {
                 var item = cartProvider.items[index];
-                double itemTotalPrice =
-                    item.price * item.quantity; // Calculate total price for each item
+                double itemTotalPrice = item.price * item.quantity;
                 return ListTile(
-                  leading: Image.network(item.imageUrl,
-                      width: 50, height: 50, fit: BoxFit.cover),
+                  leading: Image.network(
+                    item.imageUrl,
+                    width: 50,
+                    height: 50,
+                    fit: BoxFit.cover,
+                  ),
                   title: Text(item.name),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,8 +50,9 @@ class CartScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Text('Total Price: \$${itemTotalPrice.toStringAsFixed(2)}'),
-                      SizedBox(height: 4), // Add space
+                      Text(
+                          'Total Price: Rp ${NumberFormat.currency(locale: 'id_ID', symbol: '', decimalDigits: 0).format(itemTotalPrice)}'),
+                      SizedBox(height: 4),
                     ],
                   ),
                   trailing: IconButton(
@@ -66,7 +70,7 @@ class CartScreen extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  'Total Price: \$${totalPrice.toStringAsFixed(2)}',
+                  'Total Price: Rp ${NumberFormat.currency(locale: 'id_ID', symbol: '', decimalDigits: 0).format(totalPrice)}',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 ElevatedButton(
@@ -83,18 +87,14 @@ class CartScreen extends StatelessWidget {
     );
   }
 
-  // Function to launch WhatsApp with the cart details
   void _launchWhatsApp(double totalPrice) async {
     String phoneNumber = '6285326762048'; // Replace with your phone number
-    String message = 'Saya ingin pesan dengan harga ${NumberFormat.currency(locale: 'id_ID', symbol: 'Rp ', decimalDigits: 2).format(totalPrice)}';
+    String message =
+        'Hello, I would like to buy ${NumberFormat.currency(locale: 'id_ID', symbol: 'Rp ', decimalDigits: 0).format(totalPrice)}';
 
     String encodedMessage = Uri.encodeComponent(message);
     String whatsappUrl = 'https://wa.me/$phoneNumber?text=$encodedMessage';
 
-    if (await canLaunch(whatsappUrl)) {
-      await launch(whatsappUrl);
-    } else {
-      print('Could not launch WhatsApp');
-    }
+    await launch(whatsappUrl);
   }
 }

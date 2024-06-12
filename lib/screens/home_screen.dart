@@ -12,6 +12,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final List<Map<String, dynamic>> slide = [
+    {'image': 'https://via.placeholder.com/600x200'},
+    {'image': 'https://via.placeholder.com/600x200'},
+    {'image': 'https://via.placeholder.com/600x200'},
+    // Add more image URLs as needed
+  ];
   void toggleFavorite(int index) {
     setState(() {
       products[index]['isFavorite'] = !products[index]['isFavorite'];
@@ -62,13 +68,16 @@ class _HomeScreenState extends State<HomeScreen> {
               autoPlay: true,
               enlargeCenterPage: true,
             ),
-            items: products
-                .map((product) => Container(
+            items: slide
+                .map((slideItem) => Container(
                       child: Center(
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
-                          child: Image.network(product['image']!,
-                              fit: BoxFit.cover, width: 1000),
+                          child: Image.network(
+                            slideItem['image']!,
+                            fit: BoxFit.cover,
+                            width: 1000,
+                          ),
                         ),
                       ),
                     ))
@@ -84,7 +93,6 @@ class _HomeScreenState extends State<HomeScreen> {
           // Brand Sections
           buildBrandSection('Yamaha'),
           buildBrandSection('Honda'),
-          buildBrandSection('Suzuki'),
         ],
       ),
     );
@@ -142,16 +150,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         specsification_18: product['specsification_18'],
                         specsification_19: product['specsification_19'],
                         specsification_20: product['specsification_20'],
-                        specsification_21: product['specsification_21'],
-                        specsification_22: product['specsification_22'],
-                        specsification_23: product['specsification_23'],
-                        specsification_24: product['specsification_24'],
-                        specsification_25: product['specsification_25'],
-                        specsification_26: product['specsification_26'],
-                        specsification_27: product['specsification_27'],
-                        specsification_28: product['specsification_28'],
-                        specsification_29: product['specsification_29'],
-                        specsification_30: product['specsification_30'],
                       ),
                     ),
                   );
@@ -190,7 +188,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               SizedBox(height: 5),
                               Text(
-                                formatCurrency(product['price']),
+                                formatCurrency(product['price']
+                                    .toDouble()), // Convert price to double
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: Colors.grey[700],
@@ -225,7 +224,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  String formatCurrency(int amount) {
+  String formatCurrency(double amount) {
     final formatCurrency =
         NumberFormat.currency(locale: 'id_ID', symbol: 'Rp ');
     return formatCurrency.format(amount);

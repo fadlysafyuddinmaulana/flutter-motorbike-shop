@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:motorbike_shop/providers/cart_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:intl/intl.dart'; // Added import for NumberFormat
 
 class ProductDetailScreen extends StatefulWidget {
   final String productName;
@@ -28,16 +29,6 @@ class ProductDetailScreen extends StatefulWidget {
   final String specsification_18;
   final String specsification_19;
   final String specsification_20;
-  final String specsification_21;
-  final String specsification_22;
-  final String specsification_23;
-  final String specsification_24;
-  final String specsification_25;
-  final String specsification_26;
-  final String specsification_27;
-  final String specsification_28;
-  final String specsification_29;
-  final String specsification_30;
 
   ProductDetailScreen({
     required this.productName,
@@ -64,16 +55,6 @@ class ProductDetailScreen extends StatefulWidget {
     required this.specsification_18,
     required this.specsification_19,
     required this.specsification_20,
-    required this.specsification_21,
-    required this.specsification_22,
-    required this.specsification_23,
-    required this.specsification_24,
-    required this.specsification_25,
-    required this.specsification_26,
-    required this.specsification_27,
-    required this.specsification_28,
-    required this.specsification_29,
-    required this.specsification_30,
   });
 
   @override
@@ -110,11 +91,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 children: <Widget>[
                   Row(
                     children: <Widget>[
-                      Image.network(
-                        widget.imageUrl,
-                        height: 150,
-                        width: 150,
-                        fit: BoxFit.cover,
+                      Center(
+                        child: Image.network(
+                          widget.imageUrl,
+                          height: 300,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                       SizedBox(width: 20),
                       Expanded(
@@ -131,7 +113,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             ),
                             SizedBox(height: 10),
                             Text(
-                              '\$${widget.price}',
+                              NumberFormat.currency(
+                                      locale: 'id_ID',
+                                      symbol: 'Rp',
+                                      decimalDigits: 0)
+                                  .format(widget.price),
                               style: TextStyle(
                                 fontSize: 20,
                                 color: Colors.grey[700],
@@ -169,7 +155,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   ),
                   SizedBox(height: 20),
                   SizedBox(
-                    width: double.infinity, // Stretch the button to full width
+                    width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
                         for (int i = 0; i < _quantity; i++) {
@@ -177,10 +163,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                               .addItem(
                             widget.productName,
                             widget.imageUrl,
-                            widget.price, // Pass the price
+                            widget.price,
                           );
                         }
-                        Navigator.pop(context); // Close the modal
+                        Navigator.pop(context);
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text('Added to cart')),
                         );
@@ -198,14 +184,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   }
 
   void _buyNow() async {
-    String message = 'Hello, I would like to buy ${widget.productName}.';
-    String url =
-        'https://wa.me/whatsappphonenumber/?text=${Uri.encodeFull(message)}';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
+    String phoneNumber = '6285326762048';
+    String message =
+        'Hello, I would like to buy ${widget.productName} for ${NumberFormat.currency(locale: 'id_ID', symbol: 'Rp ', decimalDigits: 0).format(widget.price)}';
+
+    String encodedMessage = Uri.encodeComponent(message);
+    String whatsappUrl = 'https://wa.me/$phoneNumber?text=$encodedMessage';
+
+    await launch(whatsappUrl);
   }
 
   @override
@@ -235,7 +221,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               ),
               SizedBox(height: 10),
               Text(
-                '\$${widget.price}', // Display price below the title
+                NumberFormat.currency(
+                        locale: 'id_ID', symbol: 'Rp', decimalDigits: 0)
+                    .format(widget.price),
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.grey[700],
