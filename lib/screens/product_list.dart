@@ -159,7 +159,7 @@ final List<Map<String, dynamic>> products = [
   {
     'name': 'Honda Scoopy',
     'image':
-        'https://images.tokopedia.net/img/cache/700/OJWluG/2022/8/1/b1b2d80f-0dfd-44d4-8e60-3d3497f757bf.jpg',
+        'https://images.tokopedia.net/img/cache/700/OJWluG/2022/8/1/f286ff79-5f63-4464-9f9d-5655eedc5c5e.jpg.webp?ect=4g',
     'description':
         'This is the description for Honda Scoopy. It is a high-performance scooter suitable for urban commuting.',
     'specsification_1':
@@ -236,10 +236,10 @@ final List<Map<String, dynamic>> products = [
     'isFavorite': false,
     'brand': 'Honda',
   },
- {
+  {
     'name': 'Honda Beat',
     'image':
-        'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.tokopedia.com%2Fcatalog%2Fhonda-68817%2Fhonda-beat-sporty-cbs-iss&psig=AOvVaw0EA_CSsAptH6NAHMP-8XPp&ust=1718262014690000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKihgfi-1YYDFQAAAAAdAAAAABAE',
+        'https://images.tokopedia.net/img/cache/700/OJWluG/2022/4/12/04e0e638-399a-4988-9ad1-ea1df2855a7b.jpg.webp?ect=4g',
     'description':
         'This is the description for Honda Beat. It is a stylish and efficient scooter perfect for city commuting.',
     'specsification_1': 'Tipe Mesin: 4-Stroke, SOHC, Air Cooled',
@@ -258,7 +258,8 @@ final List<Map<String, dynamic>> products = [
     'specsification_14': 'Rem Depan: Cakram Hidrolik',
     'specsification_15': 'Rem Belakang: Tromol',
     'specsification_16': 'Suspensi Depan: Teleskopik',
-    'specsification_17': 'Suspensi Belakang: Lengan Ayun dengan Peredam Kejut Tunggal',
+    'specsification_17':
+        'Suspensi Belakang: Lengan Ayun dengan Peredam Kejut Tunggal',
     'specsification_18': 'Ban Depan: 80/90-14M/C 40P',
     'specsification_19': 'Ban Belakang: 90/90-14M/C 46P',
     'price': 17000000.0,

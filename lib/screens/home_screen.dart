@@ -13,9 +13,18 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final List<Map<String, dynamic>> slide = [
-    {'image': 'https://via.placeholder.com/600x200'},
-    {'image': 'https://via.placeholder.com/600x200'},
-    {'image': 'https://via.placeholder.com/600x200'},
+    {
+      'image':
+          'https://awsimages.detik.net.id/community/media/visual/2023/04/26/kembaran-yamaha-soul-gt-meluncur-di-brazil-1.png?w=1200'
+    },
+    {
+      'image':
+          'https://imgcdn.oto.com/large/gallery/exterior/84/2720/yamaha-grand-filano-hybrid-connected-slant-front-view-full-image-247658.jpg'
+    },
+    {
+      'image':
+          'https://images.tokopedia.net/img/cache/700/OJWluG/2022/8/2/3056ca82-72ae-485b-8bec-a7726752878d.jpg?ect=4g'
+    },
     // Add more image URLs as needed
   ];
   void toggleFavorite(int index) {
